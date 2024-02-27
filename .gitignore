@@ -177,3 +177,4 @@ FSMStates/.DS_Store
 venv/*
 /bin/
 pyvenv.cfg
+*.sqlite3

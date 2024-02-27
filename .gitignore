@@ -171,6 +171,7 @@ Utils/__pycache__/
 FSMStates/.DS_Store/
 .DS_Store
 FSMStates/.DS_Store
+.vscode/*
 
 /Bot.db
 /venv/

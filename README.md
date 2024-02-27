@@ -1,0 +1,1 @@
+An example of a django project for implementing it into a bot.

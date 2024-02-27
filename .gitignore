@@ -180,4 +180,3 @@ venv/*
 pyvenv.cfg
 *.sqlite3
 .pylintrc
-.vscode/*

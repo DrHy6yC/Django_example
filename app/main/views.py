@@ -1,6 +1,14 @@
 from django.shortcuts import render
 
 
+def test(request):
+    context = {
+        'title': "Bot for English",
+        'name_logo': "Bot"
+    }
+
+    return render(request, "main/test.html", context)
+
 def index(request):
     context = {
         'title': "Bot for English",

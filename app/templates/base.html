@@ -20,7 +20,8 @@
     <link rel="stylesheet" href="/static/assets/css/animate.css">
     <link rel="stylesheet" href="static/assets/css/swiper-bundle.min.css">
     <!--link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/-->
-    
+    {% block css %}{% endblock css %}
+
   </head>
 
 <body>
@@ -60,7 +61,7 @@
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
                       <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                      <li class="scroll-to-section"><a href="#services">Services</a></li>
+                      <li class="scroll-to-section"><a href="{% url "main:test" %}">Test</a></li>
                       <li class="scroll-to-section"><a href="#courses">Courses</a></li>
                       <li class="scroll-to-section"><a href="#team">Team</a></li>
                       <li class="scroll-to-section"><a href="#events">Events</a></li>
@@ -77,7 +78,19 @@
   </header>
   <!-- ***** Header Area End ***** -->
 
- {% block content %}{% endblock  %}
+  <div class="main-banner" id="top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          
+            {% block content %}{% endblock  %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 
   <footer>
     <div class="container">
@@ -95,6 +108,8 @@
   <script src="/static/assets/js/owl-carousel.js"></script>
   <script src="/static/assets/js/counter.js"></script>
   <script src="/static/assets/js/custom.js"></script>
+
+  {% block js %}{% endblock js %}
 
   </body>
 </html>

@@ -1,98 +1,58 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}
 
-<head>
-  <!-- Basic -->
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <!-- Mobile Metas -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <!-- Site Metas -->
-  <meta name="keywords" content="" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
+{% block css %}
+<!-- bootstrap core css -->
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 
-  <title>English Bot</title>
+<!-- fonts style -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
 
+<!--owl slider stylesheet -->
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
 
+<!-- font awesome style -->
+<link href="/static/test/css/font-awesome.min.css" rel="stylesheet" />
+<!-- nice select -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha256-mLBIhmBvigTFWPSCtvdu6a76T+3Xyt+K571hupeFLg4=" crossorigin="anonymous" />
+<!-- datepicker -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css">
+<!-- Custom styles for this template -->
+<link href="/static/test/css/style.css" rel="stylesheet" />
+<!-- responsive style -->
+<link href="/static/test/css/responsive.css" rel="stylesheet" />
+{% endblock  %}
 
-  <!-- bootstrap core css -->
-  <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css" />
-  <!-- progress barstle -->
-  <link rel="stylesheet" href="/static/css/css-circular-prog-bar.css">
-  <!-- fonts style -->
-  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
-  <!-- font wesome stylesheet -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-  <!-- Custom styles for this template -->
-  <link href="/static/css/style.css" rel="stylesheet" />
-  <!-- responsive style -->
-  <link href="/static/css/responsive.css" rel="stylesheet" />
-
-
-
-
-  <link rel="stylesheet" href="/static/css/css-circular-prog-bar.css">
-
-
-</head>
-
-<body>
-  <div class="top_container">
-    <!-- header section strats -->
-    <header class="header_section">
-      <div class="container">
-        <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="index.html">
-            <img src="/static/images/logo.png" alt="">
-            <span>
-              Bot education
-            </span>
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </nav>
-      </div>
-    </header>
-    <section class="hero_section ">
-      <div class="hero-container container">
-        <div class="hero_detail-box">
-          <h3>
-            Добро пожаловать в <br>
-            Бота для изучения 
-          </h3>
-          <h1>
-              English language
-          </h1>
-          <p>
-            Тут можно посмотреть результаты ранее пройденных тестов <br>
-            Получить задание или тест
-          </p>
-        </div>
-        <div class="hero_img-container">
-          <div>
-            <img src="/static/images/hero.png" alt="" class="img-fluid">
-          </div>
+{% block content %}
+  <section class="book_section layout_padding">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <form>
+            <h4>
+              Проверка <span>Д/З</span>
+            </h4>
+        
+            <div class="btn-box">
+              <button type="submit" class="btn ">Submit Now</button>
+            </div>
+          </form>
         </div>
       </div>
-    </section>
-  </div>
-  <!-- end header section -->
-
-  <!-- footer section -->
-  <section class="container-fluid footer_section">
-    <p>
-      Copyright &copy; 2024 All Rights Reserved By Dr.Hy6yC
-    </p>
+    </div>
   </section>
-  <!-- footer section -->
+{% endblock  %}
 
-  <script type="text/javascript" src="/static/js/jquery-3.4.1.min.js"></script>
-  <script type="text/javascript" src="/static/js/bootstrap.js"></script>
-
-</body>
-
-</html>
+{% comment %} {% block js %}
+  <!-- jQery -->
+  <script src="/static/test/js/jquery-3.4.1.min.js"></script>
+  <!-- bootstrap js -->
+  <script src="/static/test/js/bootstrap.js"></script>
+  <!-- nice select -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js" integrity="sha256-Zr3vByTlMGQhvMfgkQ5BtWRSKBGa2QlspKYJnkjZTmo=" crossorigin="anonymous"></script>
+  <!-- owl slider -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <!-- datepicker -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+  <!-- custom js -->
+  <script src="/static/test/js/custom.js"></script>
+{% endblock  %} {% endcomment %}

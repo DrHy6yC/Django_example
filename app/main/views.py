@@ -1,5 +1,10 @@
 from django.shortcuts import render
 
+from rest_framework import viewsets
+
+from .serializers import QuizeSerializer
+from .models import Quize
+
 
 def test(request):
     context = {
@@ -36,3 +41,8 @@ def index(request):
     }
 
     return render(request, "main/index.html", context)
+
+
+class QuizeViewSet(viewsets.ModelViewSet):
+    queryset = Quize.objects.all().order_by('quize_name')
+    serializer_class = QuizeSerializer

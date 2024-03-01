@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Constant(models.Model):
-    constant_name = models.CharField(max_length=200, blank=True, verbose_name="Наименование переменной")
+    constant_name = models.CharField(max_length=200, unique=True, blank=True, verbose_name="Наименование переменной")
     constant_value = models.CharField(max_length=200, blank=True, verbose_name="Значение переменной")
     create_time = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     update_time = models.DateTimeField(auto_now=True, verbose_name='Дата изменения')
@@ -17,9 +17,9 @@ class Constant(models.Model):
 
 
 class LevelUser(models.Model):
-    level_text = models.CharField(max_length=200, blank=True, verbose_name="Уровень")
-    min_level_score = models.IntegerField(blank=True, verbose_name="Минималтный процент уровня")
-    max_level_score = models.IntegerField(blank=True, verbose_name="Максимальный процент уровня")
+    level_text = models.CharField(max_length=200, unique=True, blank=True, verbose_name="Уровень")
+    min_level_score = models.IntegerField(blank=True, unique=True, verbose_name="Минималтный процент уровня")
+    max_level_score = models.IntegerField(blank=True, unique=True, verbose_name="Максимальный процент уровня")
     create_time = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     update_time = models.DateTimeField(auto_now=True, verbose_name='Дата изменения')
 
@@ -43,7 +43,7 @@ class AccesUser(models.Model):
 
 
 class StatusQuize(models.Model):
-    status_text = models.CharField(max_length=200, blank=True, verbose_name="Статус")
+    status_text = models.CharField(max_length=200, unique=True, blank=True, verbose_name="Статус")
     create_time = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     update_time = models.DateTimeField(auto_now=True, verbose_name='Дата изменения')
 
@@ -57,7 +57,7 @@ class StatusQuize(models.Model):
 
 
 class Quize(models.Model):
-    quize_name = models.CharField(max_length=200, blank=True, verbose_name="Имя теста")
+    quize_name = models.CharField(max_length=200, unique=True, blank=True, verbose_name="Имя теста")
     quize_description = models.CharField(max_length=200, blank=True, verbose_name="Описание теста")
     create_time = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     update_time = models.DateTimeField(auto_now=True, verbose_name='Дата изменения')
@@ -73,7 +73,7 @@ class Quize(models.Model):
 
 class QuizeAnswer(models.Model):
     id_quize = models.OneToOneField(
-        Quize, models.CASCADE, unique=True, blank=True, verbose_name="ID теста"
+        Quize, models.CASCADE, blank=True, verbose_name="ID теста"
     )
     question_number = models.IntegerField(blank=True, verbose_name="Номер вопроса")
     answer_number = models.IntegerField(blank=True, verbose_name="Номер ответа")
@@ -89,7 +89,7 @@ class QuizeAnswer(models.Model):
 
 class QuizeQuestion(models.Model):
     id_quize = models.OneToOneField(
-        Quize, models.CASCADE, unique=True, blank=True, verbose_name="ID теста"
+        Quize, models.CASCADE, blank=True, verbose_name="ID теста"
     )
     question_number = models.IntegerField(blank=True, verbose_name="Номер вопроса")
     question_text = models.CharField(max_length=200, blank=True, verbose_name="Текст вопроса")
@@ -104,10 +104,10 @@ class QuizeQuestion(models.Model):
 
 class QuizeTrueAnswer(models.Model):
     id_quize = models.OneToOneField(
-        Quize, models.CASCADE, unique=True, blank=True, verbose_name="ID теста"
+        Quize, models.CASCADE, blank=True, verbose_name="ID теста"
     )
     id_answer = models.OneToOneField(
-        QuizeAnswer, models.CASCADE, unique=True, blank=True, verbose_name="ID ответа"
+        QuizeAnswer, models.CASCADE, blank=True, verbose_name="ID ответа"
     )
     question_number = models.IntegerField(blank=True, verbose_name="Номер вопроса")
     create_time = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
@@ -121,10 +121,10 @@ class QuizeTrueAnswer(models.Model):
 
 class User(models.Model):
     id_user_tg = models.BigIntegerField(unique=True, blank=True, verbose_name="ID пользователя в телеграм")
-    user_login = models.CharField(max_length=200, blank=True, verbose_name="Лонин пользователя в телеграмм")
+    user_login = models.CharField(max_length=200, unique=True, blank=True, verbose_name="Лонин пользователя в телеграмм")
     user_full_name = models.CharField(max_length=200, blank=True, verbose_name="Полное имя и фамилия из телеграмм")
-    user_level = models.OneToOneField(LevelUser, models.CASCADE, unique=True, verbose_name='Уровень пользователя')
-    user_access = models.OneToOneField(AccesUser, models.CASCADE, unique=True, verbose_name='Доступ пользователя')
+    user_level = models.OneToOneField(LevelUser, models.CASCADE, verbose_name='Уровень пользователя')
+    user_access = models.OneToOneField(AccesUser, models.CASCADE, verbose_name='Доступ пользователя')
     create_time = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     update_time = models.DateTimeField(auto_now=True, verbose_name='Дата изменения')
 
@@ -139,10 +139,10 @@ class User(models.Model):
 
 class UserQuize(models.Model):
     id_user_tg = models.OneToOneField(
-        User, models.CASCADE, unique=True, to_field="id_user_tg", verbose_name='ID пользователя в телеграмм'
+        User, models.CASCADE, to_field="id_user_tg", verbose_name='ID пользователя в телеграмм'
     )
-    id_quize = models.OneToOneField(Quize, models.CASCADE, unique=True, verbose_name='ID теста')
-    quize_status = models.OneToOneField(StatusQuize, models.CASCADE, unique=True, verbose_name='ID статуса теста')
+    id_quize = models.OneToOneField(Quize, models.CASCADE, verbose_name='ID теста')
+    quize_status = models.OneToOneField(StatusQuize, models.CASCADE, verbose_name='ID статуса теста')
     question_number = models.IntegerField(blank=True, verbose_name="Номер вопроса")
     id_answer_last = models.IntegerField(blank=True, verbose_name="ID последнего ответа пользователя")
     quize_score = models.IntegerField(verbose_name='Количество баллов пользователя')
@@ -157,10 +157,10 @@ class UserQuize(models.Model):
 
 class UserAnswer(models.Model):
     id_user_tg = models.OneToOneField(
-        User, models.CASCADE, unique=True, to_field="id_user_tg", verbose_name='ID пользователя в телеграм'
+        User, models.CASCADE, to_field="id_user_tg", verbose_name='ID пользователя в телеграм'
     )
-    id_user_quize = models.OneToOneField(UserQuize, models.CASCADE, unique=True, verbose_name='ID запушеного пользователем теста')
-    id_answer = models.OneToOneField(QuizeAnswer, models.CASCADE, unique=True, verbose_name='ID ответа')
+    id_user_quize = models.OneToOneField(UserQuize, models.CASCADE, verbose_name='ID запушеного пользователем теста')
+    id_answer = models.OneToOneField(QuizeAnswer, models.CASCADE, verbose_name='ID ответа')
     question_number = models.IntegerField(blank=True, verbose_name="Номер вопроса")
     create_time = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     update_time = models.DateTimeField(auto_now=True, verbose_name='Дата изменения')

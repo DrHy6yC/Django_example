@@ -72,7 +72,7 @@ class Quize(models.Model):
 
 
 class QuizeAnswer(models.Model):
-    id_quize = models.OneToOneField(
+    id_quize = models.ForeignKey(
         Quize, models.CASCADE, blank=True, verbose_name="ID теста"
     )
     question_number = models.IntegerField(blank=True, verbose_name="Номер вопроса")
@@ -86,9 +86,12 @@ class QuizeAnswer(models.Model):
         verbose_name = "Ответ теста"
         verbose_name_plural = "Ответы теста"
 
+    def __str__(self) -> str:
+        return self.answer_text
+
 
 class QuizeQuestion(models.Model):
-    id_quize = models.OneToOneField(
+    id_quize = models.ForeignKey(
         Quize, models.CASCADE, blank=True, verbose_name="ID теста"
     )
     question_number = models.IntegerField(blank=True, verbose_name="Номер вопроса")
@@ -101,12 +104,15 @@ class QuizeQuestion(models.Model):
         verbose_name = "Вопрос теста"
         verbose_name_plural = "Вопросы теста"
 
+    def __str__(self) -> str:
+        return self.question_text
+
 
 class QuizeTrueAnswer(models.Model):
-    id_quize = models.OneToOneField(
+    id_quize = models.ForeignKey(
         Quize, models.CASCADE, blank=True, verbose_name="ID теста"
     )
-    id_answer = models.OneToOneField(
+    id_answer = models.ForeignKey(
         QuizeAnswer, models.CASCADE, blank=True, verbose_name="ID ответа"
     )
     question_number = models.IntegerField(blank=True, verbose_name="Номер вопроса")
@@ -115,16 +121,19 @@ class QuizeTrueAnswer(models.Model):
 
     class Meta:
         db_table = "quize_true_answer"
-        verbose_name = "Правильный вопрос для теста"
-        verbose_name_plural = "Правильные вопросы для теста"
+        verbose_name = "Правильный ответ для теста"
+        verbose_name_plural = "Правильные ответы для теста"
+
+    def __str__(self) -> str:
+        return self.id_answer
 
 
 class User(models.Model):
     id_user_tg = models.BigIntegerField(unique=True, blank=True, verbose_name="ID пользователя в телеграм")
     user_login = models.CharField(max_length=200, unique=True, blank=True, verbose_name="Лонин пользователя в телеграмм")
     user_full_name = models.CharField(max_length=200, blank=True, verbose_name="Полное имя и фамилия из телеграмм")
-    user_level = models.OneToOneField(LevelUser, models.CASCADE, verbose_name='Уровень пользователя')
-    user_access = models.OneToOneField(AccesUser, models.CASCADE, verbose_name='Доступ пользователя')
+    user_level = models.ForeignKey(LevelUser, models.CASCADE, verbose_name='Уровень пользователя')
+    user_access = models.ForeignKey(AccesUser, models.CASCADE, verbose_name='Доступ пользователя')
     create_time = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     update_time = models.DateTimeField(auto_now=True, verbose_name='Дата изменения')
 
@@ -138,11 +147,11 @@ class User(models.Model):
 
 
 class UserQuize(models.Model):
-    id_user_tg = models.OneToOneField(
+    id_user_tg = models.ForeignKey(
         User, models.CASCADE, to_field="id_user_tg", verbose_name='ID пользователя в телеграмм'
     )
-    id_quize = models.OneToOneField(Quize, models.CASCADE, verbose_name='ID теста')
-    quize_status = models.OneToOneField(StatusQuize, models.CASCADE, verbose_name='ID статуса теста')
+    id_quize = models.ForeignKey(Quize, models.CASCADE, verbose_name='ID теста')
+    quize_status = models.ForeignKey(StatusQuize, models.CASCADE, verbose_name='ID статуса теста')
     question_number = models.IntegerField(blank=True, verbose_name="Номер вопроса")
     id_answer_last = models.IntegerField(blank=True, verbose_name="ID последнего ответа пользователя")
     quize_score = models.IntegerField(verbose_name='Количество баллов пользователя')
@@ -156,11 +165,11 @@ class UserQuize(models.Model):
 
 
 class UserAnswer(models.Model):
-    id_user_tg = models.OneToOneField(
+    id_user_tg = models.ForeignKey(
         User, models.CASCADE, to_field="id_user_tg", verbose_name='ID пользователя в телеграм'
     )
-    id_user_quize = models.OneToOneField(UserQuize, models.CASCADE, verbose_name='ID запушеного пользователем теста')
-    id_answer = models.OneToOneField(QuizeAnswer, models.CASCADE, verbose_name='ID ответа')
+    id_user_quize = models.ForeignKey(UserQuize, models.CASCADE, verbose_name='ID запушеного пользователем теста')
+    id_answer = models.ForeignKey(QuizeAnswer, models.CASCADE, verbose_name='ID ответа')
     question_number = models.IntegerField(blank=True, verbose_name="Номер вопроса")
     create_time = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     update_time = models.DateTimeField(auto_now=True, verbose_name='Дата изменения')

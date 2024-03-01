@@ -21,6 +21,8 @@ class Constant(models.Model):
 
     class Meta:
         db_table = "constant"
+        verbose_name = "Константа"
+        verbose_name_plural = "Константы"
 
     def __str__(self) -> str:
         return self.constant_name
@@ -37,6 +39,8 @@ class QuizeAnswer(models.Model):
 
     class Meta:
         db_table = "quize_answer"
+        verbose_name = "Ответ теста"
+        verbose_name_plural = "Ответы теста"
 
 
 class QuizeQuestion(models.Model):
@@ -49,6 +53,8 @@ class QuizeQuestion(models.Model):
 
     class Meta:
         db_table = "quize_question"
+        verbose_name = "Вопрос теста"
+        verbose_name_plural = "Вопросы теста"
 
 
 class QuizeStatus(models.Model):
@@ -59,6 +65,8 @@ class QuizeStatus(models.Model):
 
     class Meta:
         db_table = "quize_qtatus"
+        verbose_name = "Статус теста"
+        verbose_name_plural = "Статусы теста"
 
     def __str__(self) -> str:
         return self.status_text
@@ -76,6 +84,8 @@ class QuizeTrueAnswer(models.Model):
 
     class Meta:
         db_table = "quize_true_answer"
+        verbose_name = "Правильный вопрос для теста"
+        verbose_name_plural = "Правильные вопросы для теста"
 
 
 class Quize(models.Model):
@@ -87,6 +97,8 @@ class Quize(models.Model):
 
     class Meta:
         db_table = "quize"
+        verbose_name = "Тест"
+        verbose_name_plural = "Тесты"
 
     def __str__(self) -> str:
         return self.quize_name
@@ -104,6 +116,8 @@ class User(models.Model):
 
     class Meta:
         db_table = "user"
+        verbose_name = "Пользователь в telegramm"
+        verbose_name_plural = "Пользователи в telegramm"
 
     def __str__(self) -> str:
         return f'{self.id_user_tg} {self.user_login}'
@@ -124,6 +138,8 @@ class UserAnswer(models.Model):
 
     class Meta:
         db_table = "user_answer"
+        verbose_name = "Ответ пользователя"
+        verbose_name_plural = "Ответы пользователя"
 
 
 class UserLevel(models.Model):
@@ -136,6 +152,8 @@ class UserLevel(models.Model):
 
     class Meta:
         db_table = "user_level"
+        verbose_name = "Уровень пользователя"
+        verbose_name_plural = "Уровни пользователя"
 
 
 class UserQuize(models.Model):
@@ -153,3 +171,5 @@ class UserQuize(models.Model):
 
     class Meta:
         db_table = "user_quize"
+        verbose_name = "Запущенный тест пользователя"
+        verbose_name_plural = "Запущенные тесты пользователя"

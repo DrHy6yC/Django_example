@@ -132,8 +132,8 @@ class User(models.Model):
     id_user_tg = models.BigIntegerField(unique=True, blank=True, verbose_name="ID пользователя в телеграм")
     user_login = models.CharField(max_length=200, unique=True, blank=True, verbose_name="Лонин пользователя в телеграмм")
     user_full_name = models.CharField(max_length=200, blank=True, verbose_name="Полное имя и фамилия из телеграмм")
-    user_level = models.ForeignKey(LevelUser, models.CASCADE, verbose_name='Уровень пользователя')
-    user_access = models.ForeignKey(AccesUser, models.CASCADE, verbose_name='Доступ пользователя')
+    user_level = models.ForeignKey(LevelUser, models.CASCADE, default=1,  verbose_name='Уровень пользователя')
+    user_access = models.ForeignKey(AccesUser, models.CASCADE, default=1, verbose_name='Доступ пользователя')
     create_time = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     update_time = models.DateTimeField(auto_now=True, verbose_name='Дата изменения')
 

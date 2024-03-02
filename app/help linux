@@ -1,0 +1,5 @@
+nohup python3 manage.py runserver youface.ru:8000 &
+pgrep -a python 
+
+source venv/bin/activate
+git pull origin

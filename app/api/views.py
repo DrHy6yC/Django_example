@@ -20,3 +20,38 @@ class UserViewSet(viewsets.ModelViewSet):
 class UserQuizeViewSet(viewsets.ModelViewSet):
     queryset = serializers.UserQuize.objects.all().order_by('id')
     serializer_class = serializers.UserQuizeSerializer
+
+
+class UserAnswerViewSet(viewsets.ModelViewSet):
+    queryset = serializers.UserAnswer.objects.all().order_by('id')
+    serializer_class = serializers.UserAnswerSerializer
+
+
+class LevelUserViewSet(viewsets.ModelViewSet):
+    queryset = serializers.LevelUser.objects.all().order_by('id')
+    serializer_class = serializers.LevelUserSerializer
+
+
+class AccesUserViewSet(viewsets.ModelViewSet):
+    queryset = serializers.AccesUser.objects.all().order_by('id')
+    serializer_class = serializers.AccesUserSerializer
+
+
+class QuizeAnswerViewSet(viewsets.ModelViewSet):
+    queryset = serializers.QuizeAnswer.objects.all().order_by('id')
+    serializer_class = serializers.QuizeAnswerSerializer
+
+
+class QuizeQuestionViewSet(viewsets.ModelViewSet):
+    queryset = serializers.QuizeQuestion.objects.all().order_by('id')
+    serializer_class = serializers.QuizeQuestionSerializer
+
+
+class QuizeTrueAnswerViewSet(viewsets.ModelViewSet):
+    queryset = serializers.QuizeTrueAnswer.objects.all().order_by('id')
+    serializer_class = serializers.QuizeTrueAnswerSerializer
+
+
+class StatusQuizeViewSet(viewsets.ModelViewSet):
+    queryset = serializers.StatusQuize.objects.all().order_by('id')
+    serializer_class = serializers.StatusQuizeSerializer

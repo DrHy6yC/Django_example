@@ -1,3 +1,5 @@
+cd pet/
+cd Django_example/
 git pull origin
 source venv/bin/activate
 cd app

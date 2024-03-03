@@ -1,52 +1,5 @@
 from django.shortcuts import render
 
-from rest_framework import viewsets
-
-from .serializers import (
-    Quize,
-    Constant,
-    User, 
-    UserQuize, 
-    UserAnswer, 
-    LevelUser, 
-    AccesUser, 
-    QuizeAnswer, 
-    QuizeQuestion, 
-    QuizeTrueAnswer, 
-    StatusQuize,
-    QuizeSerializer,
-    ConstantSerializer,
-    UserSerializer,
-    UserQuizeSerializer
-) 
-
-
-class QuizeViewSet(viewsets.ModelViewSet):
-    queryset = Quize.objects.all().order_by('quize_name')
-    serializer_class = QuizeSerializer
-
-class ConstantViewSet(viewsets.ModelViewSet):
-    queryset = Constant.objects.all().order_by('constant_name')
-    serializer_class = ConstantSerializer
-
-
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all().order_by('id_user_tg')
-    serializer_class = UserSerializer
-
-
-class UserQuizeViewSet(viewsets.ModelViewSet):
-    queryset = UserQuize.objects.all().order_by('id')
-    serializer_class = UserQuizeSerializer
-
-
-def test(request):
-    context = {
-        'title': "Bot for English",
-        'name_logo': "Bot"
-    }
-
-    return render(request, "main/test.html", context)
 
 def index(request):
     context = {
@@ -75,3 +28,12 @@ def index(request):
     }
 
     return render(request, "main/index.html", context)
+
+
+def test(request):
+    context = {
+        'title': "Bot for English",
+        'name_logo': "Bot"
+    }
+
+    return render(request, "main/test.html", context)

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <form>
+    <h4>
+      Проверка Д/З
+    </h4>
+    <div class="form-row ">
+      <div class="form-group col-lg-4">
+        <label for="inputStudentName">Имя ученика </label>
+        <input type="text" class="form-control" id="inputStudentName" placeholder="">
+      </div>
+      <div class="form-group col-lg-4">
+        <label for="inputRatingStudent">Оценка ученику</label>
+        <select name="" class="form-control wide" id="inputRatingStudent">
+          <option value="Awesome ">Отлично </option>
+          <option value="Good ">Хорошо </option>
+          <option value="Satisfactorily ">Удовлетворительно </option>
+          <option value="Not satisfactory ">Не удовлетворительно </option>
+        </select>
+      </div>
+    </div>
+    <div class="btn-box">
+      <button type="submit" class="btn ">Submit Now</button>
+    </div>
+  </form>
+{% endblock  %}

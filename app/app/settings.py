@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 
     'main',
     'api',
+    'get_token',
 ]
 
 MIDDLEWARE = [
@@ -93,7 +94,6 @@ DATABASES = {
 REST_FRAMEWORK: dict[str, list[str]] = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
-        # 'rest_framework.authentication.SessionAuthentication',
     ]
 }
 

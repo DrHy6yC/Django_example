@@ -29,7 +29,7 @@ SECRET_KEY = getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['youface.ru', '127.0.0.1']
+ALLOWED_HOSTS = ['youface.ru', '127.0.0.1', 'localhost.local']
 
 
 # Application definition
@@ -155,3 +155,5 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.telegram.TelegramAuth',
     'django.contrib.auth.backends.ModelBackend',
 )
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

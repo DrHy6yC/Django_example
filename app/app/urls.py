@@ -23,6 +23,7 @@ from api import urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls', namespace='main')),
+    path('auth/', include('social_django.urls', namespace='social')),
 ]
 
 urlpatterns += urls.urlpatterns

@@ -3,25 +3,16 @@
 {% block content %}
   <form>
     <h4>
-      Проверка Д/З
+      Получение токена
     </h4>
     <div class="form-row ">
       <div class="form-group col-lg-4">
-        <label for="inputStudentName">Имя ученика </label>
-        <input type="text" class="form-control" id="inputStudentName" placeholder="">
+        <label for="inputUser">Пользователь </label>
+        <input type="text" class="my-input-text" id="inputUser" placeholder="" value="{{ user.username }} " size="50">
+        <label for="inputToken">Токен </label>
+        <input type="text" class="my-input-text" id="inputToken" readonly placeholder="" value="{{ token }}"  size="50">
+        <input type="button"id='inputGet' value="Получить">
       </div>
-      <div class="form-group col-lg-4">
-        <label for="inputRatingStudent">Оценка ученику</label>
-        <select name="" class="form-control wide" id="inputRatingStudent">
-          <option value="Awesome ">Отлично </option>
-          <option value="Good ">Хорошо </option>
-          <option value="Satisfactorily ">Удовлетворительно </option>
-          <option value="Not satisfactory ">Не удовлетворительно </option>
-        </select>
-      </div>
-    </div>
-    <div class="btn-box">
-      <button type="submit" class="btn ">Submit Now</button>
     </div>
   </form>
 {% endblock  %}

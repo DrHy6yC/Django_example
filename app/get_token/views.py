@@ -1,17 +1,21 @@
+from icecream import ic
+
 from django.shortcuts import render
+from django.contrib.auth.models import User
 
 from rest_framework.authtoken.models import Token
 
 
-
-
 def get_token(request):
-    token = Token.objects.get_or_create(user='user')
-    print(token.key)
+    user = User.objects.get(username='user')
+    ic(user)
+    token, isEmpty = Token.objects.get_or_create(user=user)
+    ic(token)
     context = {
         'title': "Bot for English",
         'name_logo': "Bot",
-        'token': "token.key"
+        'token': token.key,
+        'user': user
     }
 
-    return render(request, "main/test.html", context)
+    return render(request, "get_token/get_token.html", context)

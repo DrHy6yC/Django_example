@@ -20,8 +20,6 @@ from get_token import views
 
 app_name = 'get_token'
 
-
 urlpatterns = [
-    # path('', views.index, name='index'),
-    # path('test/', views.test, name='test'),
+    path('', views.get_token, name='index'),
 ]

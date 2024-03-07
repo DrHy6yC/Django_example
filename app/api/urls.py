@@ -18,6 +18,7 @@ router.register(r'user', views.UserViewSet)
 router.register(r'user_quize', views.UserQuizeViewSet)
 router.register(r'user_answer', views.UserAnswerViewSet)
 
+app_name = 'api'
 
 urlpatterns = [
     path('api/', include(router.urls)),

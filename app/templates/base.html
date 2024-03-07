@@ -60,10 +60,10 @@
                     <!-- ***** Serach Start ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                      <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+                      <li class="scroll-to-section"><a href="{% url "main:index" %}" class="active">Home</a></li>
                       <li class="scroll-to-section"><a href="{% url "main:test" %}">Test</a></li>
                       <li class="scroll-to-section"><a href="{% url "api-root" %}">API</a></li>
-                      {% comment %} <li class="scroll-to-section"><a href="{% url "token" %}">Token</a></li> {% endcomment %}
+                      <li class="scroll-to-section"><a href="{% url "token:index" %}">Token</a></li>
                       <li class="scroll-to-section"><a href="#events">Events</a></li>
                       <li class="scroll-to-section"><a href="#contact">Register Now!</a></li>
                   </ul>   
